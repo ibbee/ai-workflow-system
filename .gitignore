@@ -30,3 +30,8 @@ build/
 # OS files
 .DS_Store
 Thumbs.db
+
+*.faiss
+*.db
+uploads/
+outputs/
