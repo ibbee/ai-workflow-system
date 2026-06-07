@@ -10,6 +10,12 @@ def upload_pdf(file: UploadFile = File(...)):
             status_code=400,
             detail='Only PDFs are allowed'
         )
-    result = workflow.pdf_analysis(file)
-    return {'file-name':file.filename,
-            'analysis':result.model_dump()}
+    try:
+        result = workflow.pdf_analysis(file)
+        return {'file-name':file.filename,
+                'analysis':result.model_dump()}
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
