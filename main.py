@@ -12,4 +12,4 @@ def upload_pdf(file: UploadFile = File(...)):
         )
     result = workflow.pdf_analysis(file)
     return {'file-name':file.filename,
-            'analysis':result}
+            'analysis':result.model_dump()}
