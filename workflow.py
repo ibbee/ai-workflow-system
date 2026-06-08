@@ -2,15 +2,17 @@ import pdf_handler as pdh
 import llm
 import prompts
 import parser
-from Models import models
+from mapper import model_mapper
 
-def pdf_analysis(file):
+def pdf_analysis(mode, file):
     pdf_text = pdh.read_pdf(file)
 
-    prompt = prompts.build_prompt(pdf_text)
-
+    prompt = prompts.build_prompt(mode, pdf_text)
+    
     output = parser.parse_llm_response(llm.analyze_resume(prompt))
 
-    analysis = models.ResumeAnalysis(**output)
+    #print(output)
+
+    analysis = model_mapper(mode)(**output)
 
     return analysis
