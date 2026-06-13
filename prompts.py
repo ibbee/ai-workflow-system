@@ -37,7 +37,7 @@ Text:
     keyword_prompt = f"""
 You are a keyword extraction assistant.
 
-Extract the 10 most important keywords fromprovided text.
+Extract the 10 most important keywords from provided text.
 
 Return only Valid JSON.
 
@@ -57,4 +57,4 @@ Text:
     elif mode == 'keywords':
         return keyword_prompt
     
-    return None
+    raise ValueError("Unsupported mode")

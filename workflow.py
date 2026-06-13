@@ -11,8 +11,6 @@ def pdf_analysis(mode, file):
     
     output = parser.parse_llm_response(llm.analyze_resume(prompt))
 
-    #print(output)
-
     analysis = model_mapper(mode)(**output)
 
     return analysis

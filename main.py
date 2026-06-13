@@ -1,13 +1,10 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import workflow
+from mapper import mode_to_model
 
 app = FastAPI()
 
-VALID_MODES = [
-    "resume",
-    "summary",
-    "keywords"
-]
+VALID_MODES = list(mode_to_model.keys())
 
 @app.post('/upload-pdf/')
 def upload_pdf(file: UploadFile = File(...),mode:str = 'resume'):
